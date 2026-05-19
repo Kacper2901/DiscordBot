@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Server Data
+#data/
+src/assets/audioFile/
+
+
+# === PyCharm / JetBrains IDE ===
+.idea/
+*.iml
+*.iws
