@@ -1,6 +1,6 @@
-
 from utils.utils import *
-from data.BotConfig import *
+from data.BotConfig import BOT_TOKEN
+from data.users import *
 
 intents = Intents.default()
 intents.message_content = True
@@ -21,13 +21,17 @@ async def on_message(message):
         return
     if(message.content == "!gambling"):
             author_voice_state =  message.author.voice
+            try:
+                author_name = get_user_name(message.author.id)
+            except:
+                author_name = "kolego"
 
             #timeout author if their not in any voice channel
             if author_voice_state is None or author_voice_state.channel is None:
                 print("timeout penalty for not being in any voice channel")
                 await ban_sixty_seconds(
                     message.author,
-            "Ojoj kolego... Nastepnym razem wbij na kanal jak chcesz sie bawic",
+            f"Ojoj {author_name}... Nastepnym razem wbij na kanal jak chcesz sie bawic",
                     client
                 )
                 return
